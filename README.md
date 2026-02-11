@@ -11,4 +11,8 @@ Each run prompts for the target format.
 
 ## Demo
 
-<video src="https://github.com/inf1nite-lo0p/css-color-converter/raw/main/demo.mp4" controls width="900"></video>
+[<img
+  src="https://github.com/inf1nite-lo0p/css-color-converter/raw/main/demo.gif"
+  alt="CSS Color Converter demo"
+  width="900"
+/>](https://github.com/inf1nite-lo0p/css-color-converter/raw/main/demo.mp4)
