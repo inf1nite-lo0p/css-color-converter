@@ -1,11 +1,8 @@
 {
-    "name": "oklch-converter-local",
+    "name": "css-color-converter-local",
+    "displayName": "CSS Color Converter (Local)",
     "license": "MIT",
     "publisher": "inf1nite-lo0p",
-    "displayName": "oklch-converter-local",
-    "activationEvents": [
-        "onCommand:oklchConverter.convertSelectionOrDocument"
-    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/inf1nite-lo0p/oklch-converter-local.git"
@@ -19,27 +16,54 @@
         "Other"
     ],
     "main": "./out/extension.js",
+    "activationEvents": [
+        "onCommand:colorConverter.convertSelectionOrDocument",
+        "onCommand:oklchConverter.convertSelectionOrDocument"
+    ],
     "contributes": {
         "commands": [
             {
+                "command": "colorConverter.convertSelectionOrDocument",
+                "title": "Convert Colors (Selection or Document)"
+            },
+            {
                 "command": "oklchConverter.convertSelectionOrDocument",
-                "title": "Convert Colors to OKLCH (Selection or Document)"
+                "title": "Convert Colors (Selection or Document) -- legacy command id"
             }
         ],
         "configuration": {
-            "title": "OKLCH Converter",
+            "title": "CSS Color Converter",
             "properties": {
-                "oklchConverter.useOpacity": {
+                "colorConverter.targetFormat": {
+                    "type": "string",
+                    "default": "oklch",
+                    "enum": [
+                        "oklch",
+                        "oklab",
+                        "lch",
+                        "lab",
+                        "rgb",
+                        "hsl",
+                        "hex"
+                    ],
+                    "description": "Target color format to convert to."
+                },
+                "colorConverter.useOpacity": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Include / alpha in generated oklch() even when alpha is 1."
+                    "description": "Include / alpha in generated output even when alpha is 1."
                 },
-                "oklchConverter.precision": {
+                "colorConverter.precision": {
                     "type": "number",
                     "default": 2,
                     "minimum": 0,
                     "maximum": 6,
-                    "description": "Decimal places for numbers in generated oklch()."
+                    "description": "Decimal places for numbers in generated output."
+                },
+                "colorConverter.promptForFormat": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, prompt for the target format each run (Quick Pick)."
                 }
             }
         }
@@ -50,7 +74,8 @@
         "watch": "tsc -watch -p ./",
         "pretest": "pnpm run compile && pnpm run lint",
         "lint": "eslint src",
-        "test": "vscode-test"
+        "test": "vscode-test",
+        "test:unit": "pnpm run compile && node ./out/test/runTest.js"
     },
     "devDependencies": {
         "@biomejs/biome": "^2.3.14",
@@ -62,6 +87,7 @@
         "@vscode/test-electron": "^2.5.2",
         "@vscode/vsce": "^3.7.1",
         "eslint": "^9.39.2",
+        "mocha": "^11.7.5",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.54.0"
     },
