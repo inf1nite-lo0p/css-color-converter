@@ -1,0 +1,71 @@
+{
+    "name": "oklch-converter-local",
+    "license": "MIT",
+    "publisher": "inf1nite-lo0p",
+    "displayName": "oklch-converter-local",
+    "activationEvents": [
+        "onCommand:oklchConverter.convertSelectionOrDocument"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/inf1nite-lo0p/oklch-converter-local.git"
+    },
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "oklchConverter.convertSelectionOrDocument",
+                "title": "Convert Colors to OKLCH (Selection or Document)"
+            }
+        ],
+        "configuration": {
+            "title": "OKLCH Converter",
+            "properties": {
+                "oklchConverter.useOpacity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Include / alpha in generated oklch() even when alpha is 1."
+                },
+                "oklchConverter.precision": {
+                    "type": "number",
+                    "default": 2,
+                    "minimum": 0,
+                    "maximum": 6,
+                    "description": "Decimal places for numbers in generated oklch()."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "pnpm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "pnpm run compile && pnpm run lint",
+        "lint": "eslint src",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.3.14",
+        "@types/culori": "^4.0.1",
+        "@types/mocha": "^10.0.10",
+        "@types/node": "22.x",
+        "@types/vscode": "^1.109.0",
+        "@vscode/test-cli": "^0.0.12",
+        "@vscode/test-electron": "^2.5.2",
+        "@vscode/vsce": "^3.7.1",
+        "eslint": "^9.39.2",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.54.0"
+    },
+    "dependencies": {
+        "culori": "^4.0.2"
+    }
+}

@@ -1,0 +1,10 @@
+**/.vscode/**
+**/.github/**
+**/node_modules/**
+src/**
+*.ts
+tsconfig.json
+eslint.config.mjs
+biome.jsonc
+pnpm-lock.yaml
+*.log
