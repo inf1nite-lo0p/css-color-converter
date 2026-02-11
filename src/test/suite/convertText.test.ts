@@ -262,7 +262,7 @@ describe("convertText (advanced cases)", () => {
         assert.match(output, /\}\s*\}\s*$/);
     });
 
-    it("does not convert when declaration has extra tokens after the color", () => {
+    it("converts when declaration has trailing tokens like !important and comments", () => {
         const src = String.raw`
 :root{
   --c1: hsl(240 10% 98%) !important;
@@ -270,7 +270,7 @@ describe("convertText (advanced cases)", () => {
 }
 `;
 
-        const { output, editsApplied } = convertText(
+        const { output, editsApplied, errorColors } = convertText(
             src,
             opts({
                 targetFormat: "oklch",
@@ -279,8 +279,12 @@ describe("convertText (advanced cases)", () => {
             }),
         );
 
-        assert.equal(editsApplied, 0);
-        assert.equal(output, src);
+        assert.equal(errorColors.length, 0);
+        assert.equal(editsApplied, 2);
+
+        // Preserve the trailing tokens
+        assert.match(output, /--c1:\s*oklch\([^)]*\)\s*!important;/);
+        assert.match(output, /--c2:\s*oklch\([^)]*\)\s*\/\*\s*comment\s*\*\/;/);
     });
 
     it("handles weird but valid function forms via FUNCTION_COLOR", () => {
@@ -337,6 +341,16 @@ describe("convertText (advanced cases)", () => {
 
         assert.equal(errorColors.length, 0);
         assert.equal(editsApplied, 2000);
+        assert.match(output, /--c:\s*#[0-9a-f]{6,8}\b/i);
+    });
+
+    it("converts when !important exists after the color", () => {
+        const src = `:root{ --c: hsl(240 10% 98%) !important; }`;
+        const { output, editsApplied } = convertText(
+            src,
+            opts({ targetFormat: "hex", precision: 2, useOpacity: true }),
+        );
+        assert.equal(editsApplied, 1);
         assert.match(output, /--c:\s*#[0-9a-f]{6,8}\b/i);
     });
 });

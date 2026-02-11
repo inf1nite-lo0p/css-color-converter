@@ -18,7 +18,7 @@ const FUNCTION_COLOR =
 const PROP_NAME = "(?:--[a-zA-Z0-9-_]+|[a-zA-Z-]+)";
 
 const colorRegex = new RegExp(
-    `${PROP_NAME}\\s*:\\s*(${NAMED_COLORS}|${HEX_COLOR}|${RGB_COLOR}|${FUNCTION_COLOR})(?=\\s*;|\\s*\\})`,
+    `${PROP_NAME}\\s*:\\s*(${NAMED_COLORS}|${HEX_COLOR}|${RGB_COLOR}|${FUNCTION_COLOR})(?=[^;\\}]*?(?:;|\\}))`,
     "gi",
 );
 
