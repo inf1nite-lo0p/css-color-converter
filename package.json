@@ -1,14 +1,14 @@
 {
     "name": "css-color-converter-local",
     "displayName": "CSS Color Converter (Local)",
+    "description": "Convert CSS color values in `prop: <color>;` declarations to a chosen format (oklch, oklab, lch, lab, rgb, hsl, hex).",
+    "version": "0.0.1",
     "license": "MIT",
     "publisher": "inf1nite-lo0p",
     "repository": {
         "type": "git",
-        "url": "https://github.com/inf1nite-lo0p/oklch-converter-local.git"
+        "url": "https://github.com/inf1nite-lo0p/css-color-converter-local.git"
     },
-    "description": "",
-    "version": "0.0.1",
     "engines": {
         "vscode": "^1.109.0"
     },
@@ -17,18 +17,13 @@
     ],
     "main": "./out/extension.js",
     "activationEvents": [
-        "onCommand:colorConverter.convertSelectionOrDocument",
-        "onCommand:oklchConverter.convertSelectionOrDocument"
+        "onCommand:colorConverter.convertSelectionOrDocument"
     ],
     "contributes": {
         "commands": [
             {
                 "command": "colorConverter.convertSelectionOrDocument",
                 "title": "Convert Colors (Selection or Document)"
-            },
-            {
-                "command": "oklchConverter.convertSelectionOrDocument",
-                "title": "Convert Colors (Selection or Document) -- legacy command id"
             }
         ],
         "configuration": {
@@ -51,7 +46,7 @@
                 "colorConverter.useOpacity": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Include / alpha in generated output even when alpha is 1."
+                    "description": "Include alpha only if explicitly present in the source token or when alpha < 1."
                 },
                 "colorConverter.precision": {
                     "type": "number",

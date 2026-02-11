@@ -13,13 +13,6 @@ export function activate(context: vscode.ExtensionContext) {
             run,
         ),
     );
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            "oklchConverter.convertSelectionOrDocument",
-            run,
-        ),
-    );
 }
 
 export function deactivate() {}

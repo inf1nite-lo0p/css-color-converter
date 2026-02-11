@@ -42,9 +42,7 @@ export async function convertSelectionOrDocument(): Promise<void> {
 
     const settings = getSettings();
 
-    const targetFormat = settings.promptForFormat
-        ? await pickTargetFormat(settings.targetFormat)
-        : settings.targetFormat;
+    const targetFormat = await pickTargetFormat(settings.targetFormat);
 
     if (!targetFormat) {
         return;
