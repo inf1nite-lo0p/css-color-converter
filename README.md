@@ -8,3 +8,7 @@ Convert CSS color values in `prop: <color>;` declarations to a chosen format:
 Run: `Convert Colors (Selection or Document)` from the Command Palette.
 
 Each run prompts for the target format.
+
+## Demo
+
+<video src="https://github.com/inf1nite-lo0p/css-color-converter/raw/main/demo.mp4" controls width="900"></video>
