@@ -3,7 +3,7 @@
     "displayName": "CSS Color Converter",
     "description": "Convert CSS color values declarations in a selection to a chosen format (oklch, oklab, lch, lab, rgb, hsl, hex).",
     "icon": "logo-128x128.png",
-    "version": "0.0.1",
+    "version": "1.1.0",
     "license": "MIT",
     "publisher": "inf1nite-lo0p",
     "repository": {

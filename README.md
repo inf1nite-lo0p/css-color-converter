@@ -158,6 +158,21 @@ Converted to `oklch()`:
 
 ---
 
+## Issues and Feedback
+
+If you encounter a bug, unexpected behavior, or would like to request a feature, please open an issue on GitHub:
+
+👉 [https://github.com/inf1nite-lo0p/css-color-converter/issues](https://github.com/inf1nite-lo0p/css-color-converter/issues)
+
+When reporting an issue, include:
+
+- Your VS Code version
+- The extension version
+- A minimal reproducible example
+- The expected vs actual behavior
+
+---
+
 ## License
 
-MIT
+Licensed under the [MIT License](https://github.com/inf1nite-lo0p/css-color-converter/blob/main/LICENSE).
