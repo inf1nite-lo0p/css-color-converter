@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./logo.png" alt="CSS Color Converter logo" width="160" />
+</p>
+
 # CSS Color Converter
 
 Convert CSS color values to a different color format directly inside your files.
