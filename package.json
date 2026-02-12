@@ -15,7 +15,7 @@
     "categories": [
         "Other"
     ],
-    "main": "./out/extension.js",
+    "main": "./dist/extension.js",
     "activationEvents": [
         "onCommand:colorConverter.convertSelectionOrDocument"
     ],
@@ -64,7 +64,9 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "pnpm run compile",
+        "build": "node build.mjs",
+        "vscode:prepublish": "pnpm run build",
+        "package": "pnpm run build && pnpm vsce package --no-dependencies",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "pnpm run compile && pnpm run lint",
@@ -81,6 +83,7 @@
         "@vscode/test-cli": "^0.0.12",
         "@vscode/test-electron": "^2.5.2",
         "@vscode/vsce": "^3.7.1",
+        "esbuild": "^0.27.3",
         "eslint": "^9.39.2",
         "mocha": "^11.7.5",
         "typescript": "^5.9.3",
@@ -88,5 +91,10 @@
     },
     "dependencies": {
         "culori": "^4.0.2"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild"
+        ]
     }
 }

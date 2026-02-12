@@ -1,10 +1,25 @@
-**/.vscode/**
-**/.github/**
-**/node_modules/**
+# Don't ship demos / media
+demo.gif
+demo.mp4
+**/*.mp4
+**/*.mov
+**/*.gif
+
+# Don't ship repo/dev files
+.vscode-test.*
+vsc-extension-quickstart.md
+.gitignore
+.github/**
+.vscode/**
+test/**
 src/**
-*.ts
+out/**
+**/*.map
+pnpm-lock.yaml
 tsconfig.json
 eslint.config.mjs
 biome.jsonc
-pnpm-lock.yaml
-*.log
+build.mjs
+
+# We bundle with esbuild, don't ship deps
+node_modules/**
