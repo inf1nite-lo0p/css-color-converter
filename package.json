@@ -1,7 +1,7 @@
 {
     "name": "css-color-converter",
     "displayName": "CSS Color Converter",
-    "description": "Convert CSS color values in `prop: <color>;` declarations to a chosen format (oklch, oklab, lch, lab, rgb, hsl, hex).",
+    "description": "Convert CSS color values declarations in a selection to a chosen format (oklch, oklab, lch, lab, rgb, hsl, hex).",
     "version": "0.0.1",
     "license": "MIT",
     "publisher": "inf1nite-lo0p",
